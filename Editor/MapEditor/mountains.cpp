@@ -459,13 +459,11 @@ void Mountains::removeMountainsOut(MapProperties &properties) {
 MapElement* Mountains::updateRaycasting(float &finalDistance, Position
     &finalPosition, QRay3D &ray)
 {
-    MapElement *element, *newElement;
+    MapElement *element;
     Position position;
     Portion portion;
     MountainDatas *mountain;
-    Map *map;
-    MapPortion *mapPortion;
-    bool remove;
+
 
     element = nullptr;
     for (QHash<Position, MountainDatas *>::iterator i = m_all.begin(); i !=
@@ -477,23 +475,6 @@ MapElement* Mountains::updateRaycasting(float &finalDistance, Position
             finalPosition, ray))
         {
             element = mountain;
-        }
-    }
-
-    // Overflow
-    map = RPM::get()->project()->currentMap();
-    for (QSet<Position>::iterator i = m_overflow.begin(); i != m_overflow.end();
-        i++)
-    {
-        position = *i;
-        map->getLocalPortion(position, portion);
-        mapPortion = map->mapPortion(portion);
-        if (mapPortion != nullptr) {
-            newElement = mapPortion->updateRaycastingOverflowMountain(position,
-                finalDistance, finalPosition, ray, remove);
-            if (newElement != nullptr) {
-                element = newElement;
-            }
         }
     }
 

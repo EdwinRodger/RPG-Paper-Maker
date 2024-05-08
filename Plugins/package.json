@@ -1,6 +1,7 @@
 {
 	"battle": [
-		"JollyFlipAnimation"
+		"JollyFlipAnimation",
+		"party_presence"
 	],
 	"menus": [
 
@@ -8,10 +9,14 @@
 	"map": [
 		"Fog",
 		"JSONModelLoader",
+		"GLTF Loader",
 		"ModelLoadOnMapLoad",
-		"Raycaster"
+		"Raycaster",
+		"Light"
 	],
 	"others": [
-
+		"Gamepad",
+		"Move in all directions",
+		"Skip title"
 	]
 }
